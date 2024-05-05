@@ -536,10 +536,14 @@ function lightLabsWidget_initialize() {
 
     // jankilyInsertDiv(productData.baseUrlToMatch);
 
-    document.getElementById("lightlabswidget").innerHTML = htmlToInject;
+    const llw = document.getElementById("lightlabswidget");
+    llw.innerHTML = htmlToInject;
     const styleTag = document.createElement("style");
     styleTag.innerHTML = cssToInject;
     document.head.appendChild(styleTag);
+
+    const parentSection = llw.closest("section");
+    parentSection.style.height = "auto";
   }
 
   const sidebar = document.getElementById("lightlabswidget-sidebar");
