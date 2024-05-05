@@ -542,8 +542,8 @@ function lightLabsWidget_initialize() {
     styleTag.innerHTML = cssToInject;
     document.head.appendChild(styleTag);
 
-    const parentSection = llw.closest("section");
-    parentSection.style.height = "auto";
+    // const parentSection = llw.closest("section");
+    // parentSection.style.height = "auto";
   }
 
   const sidebar = document.getElementById("lightlabswidget-sidebar");
