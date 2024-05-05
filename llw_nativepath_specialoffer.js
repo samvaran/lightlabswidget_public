@@ -523,18 +523,18 @@ function lightLabsWidget_initialize() {
   let productData = labData[0];
 
   if (typeof ENV === "undefined" || ENV !== "test") {
-    console.log("NOT TEST");
+    // console.log("NOT TEST");
 
-    const currentUrl = window.location.href;
-    productData = labData.find(
-      (d) =>
-        currentUrl.includes(d.baseUrlToMatch) &&
-        currentUrl.includes(d.slugToMatch)
-    );
-    if (!productData) return;
-    console.log("MATCH FOUND");
+    // const currentUrl = window.location.href;
+    // productData = labData.find(
+    //   (d) =>
+    //     currentUrl.includes(d.baseUrlToMatch) &&
+    //     currentUrl.includes(d.slugToMatch)
+    // );
+    // if (!productData) return;
+    // console.log("MATCH FOUND");
 
-    jankilyInsertDiv(productData.baseUrlToMatch);
+    // jankilyInsertDiv(productData.baseUrlToMatch);
 
     document.getElementById("lightlabswidget").innerHTML = htmlToInject;
     const styleTag = document.createElement("style");
