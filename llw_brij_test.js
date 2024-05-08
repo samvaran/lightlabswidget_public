@@ -65,9 +65,7 @@ const cssToInject = `
   flex-direction: column;
   width: 100%;
   border-radius: 5px;
-  border: 2px solid #dedede;
   background-color: white;
-  padding: 18px 20px;
   margin-top: 10px;
   margin-bottom: 10px;
   line-height: normal;
