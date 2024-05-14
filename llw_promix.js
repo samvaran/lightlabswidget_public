@@ -411,10 +411,7 @@ const labData = [
   {
     baseUrlToMatch: null,
     slugToMatch: null,
-    bigBars: [
-      { name: "Gelatin", claim: 10.1, actual: 10.2, units: "g" },
-      { name: "Creatine", claim: 4.5, actual: 4.5, units: "g" },
-    ],
+    bigBars: [{ name: "Protein", claim: 30, actual: 31, units: "g" }],
     sidebarSectionsHtml: `
           <div class="lightlabswidget-sidebar-section">
               <div class="lightlabswidget-sidebar-section-title">

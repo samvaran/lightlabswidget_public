@@ -411,10 +411,7 @@ const labData = [
   {
     baseUrlToMatch: null,
     slugToMatch: null,
-    bigBars: [
-      { name: "Gelatin", claim: 10.1, actual: 10.2, units: "g" },
-      { name: "Creatine", claim: 4.5, actual: 4.5, units: "g" },
-    ],
+    bigBars: [{ name: "Creatine", claim: 4.5, actual: 4.5, units: "g" }],
     sidebarSectionsHtml: `
           <div class="lightlabswidget-sidebar-section">
               <div class="lightlabswidget-sidebar-section-title">
@@ -445,6 +442,17 @@ const labData = [
               <div class="lightlabswidget-contaminants"></div>
               <div class="lightlabswidget-sidebar-section-boxtext">
                   Substantially lower than the daily limits mandated by California Prop 65.
+              </div>
+          </div>
+
+          <div class="lightlabswidget-sidebar-section">
+              <div class="lightlabswidget-sidebar-section-title">
+                  Detailed Lab Results
+              </div>
+              <div class="lightlabswidget-sidebar-section-buttonholder">
+                  <a href="https://humorous-garment-649.notion.site/Create-Gummies-COA-6ca7060008b64d72829ec1c89339eaf5" target="_blank" class="lightlabswidget-sidebar-section-buttonlink">
+                      View COAs
+                  </a>
               </div>
           </div>
         `,
