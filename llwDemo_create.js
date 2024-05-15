@@ -522,7 +522,7 @@ const labData = [
                   Detailed Lab Results
               </div>
               <div class="lightlabswidget-sidebar-section-buttonholder">
-                  <a href="https://humorous-garment-649.notion.site/Create-Gummies-COA-6ca7060008b64d72829ec1c89339eaf5" target="_blank" class="lightlabswidget-sidebar-section-buttonlink">
+                  <a href="https://lightlabs.s3.us-west-1.amazonaws.com/create_coa.pdf" target="_blank" class="lightlabswidget-sidebar-section-buttonlink">
                       View COAs
                   </a>
               </div>
