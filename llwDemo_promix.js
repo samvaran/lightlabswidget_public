@@ -94,7 +94,7 @@ const cssToInject = `#lightlabswidget-container {
   flex-direction: column;
   width: 100%;
   border-radius: 5px;
-  border: 1px solid black;
+  border: 2px solid #dedede;
   background-color: white;
   padding: 18px 20px;
   margin-top: 10px;
@@ -397,7 +397,7 @@ const cssToInject = `#lightlabswidget-container {
 .lightlabswidget-contaminant {
   display: flex;
   align-items: center;
-  padding: 4px 8px;
+  padding: 8px;
   border: 1px solid #56ac64;
   border-radius: 5px;
   background-color: #e9fbf6;
@@ -428,8 +428,55 @@ const cssToInject = `#lightlabswidget-container {
   fill: none;
 }
 .lightlabswidget-contaminants-puritymsg {
-  font-size: 11px;
-  color: #6dbce8;
+  display: flex;
+}
+.lightlabswidget-contaminants-puritymsg-text {
+  font-size: 10px;
+  color: #4374f9;
+}
+.lightlabswidget-contaminants-puritymsg-tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #4374f9;
+  margin-left: 4px;
+  margin-top: 1px;
+  width: 10px;
+  height: 10px;
+}
+.lightlabswidget-contaminants-puritymsg-tooltip-questionmark {
+  margin-top: 1px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 8px;
+  color: white;
+  font-family: Arial;
+}
+.lightlabswidget-contaminants-puritymsg-tooltip-text {
+  position: absolute;
+  visibility: hidden;
+  background-color: white;
+  border: 1px solid #dedede;
+  color: black;
+  border-radius: 5px;
+  padding: 4px 6px;
+  bottom: 125%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1;
+  white-space: nowrap;
+  font-size: 9px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.lightlabswidget-contaminants-puritymsg-tooltip:hover
+  .lightlabswidget-contaminants-puritymsg-tooltip-text {
+  visibility: visible;
+  opacity: 1;
 }
 `;
 const labData = [
@@ -578,14 +625,24 @@ function lightLabsWidget_generateContaminants() {
       standards and lab requirements to be marked as
       <b>entirely safe.</b>
     </div>
-    <div class="lightlabswidget-contaminants-list">
-      ${lightLabsWidget_generateContaminant("Lead", "<0.0005 milligrams")}
-      ${lightLabsWidget_generateContaminant("Arsenic", "<0.01 milligrams")}
-      ${lightLabsWidget_generateContaminant("Mercury", "<0.0003 milligrams")}
-      ${lightLabsWidget_generateContaminant("Cadmium", "<0.0041 milligrams")}
-    </div>
     <div class="lightlabswidget-contaminants-puritymsg">
-        Rigorously tested for purity
+        <div class="lightlabswidget-contaminants-puritymsg-text">
+          Rigorously tested to ensure product purity and compliance
+        </div>
+        <div class="lightlabswidget-contaminants-puritymsg-tooltip">
+          <div class="lightlabswidget-contaminants-puritymsg-tooltip-questionmark">
+            ?
+          </div>
+          <div class="lightlabswidget-contaminants-puritymsg-tooltip-text">
+            This product is compliant with Prop 65
+          </div>
+        </div>
+    </div>
+    <div class="lightlabswidget-contaminants-list">
+      ${lightLabsWidget_generateContaminant("Lead", "<0.5 micrograms")}
+      ${lightLabsWidget_generateContaminant("Arsenic", "<10 micrograms")}
+      ${lightLabsWidget_generateContaminant("Mercury", "<0.3 micrograms")}
+      ${lightLabsWidget_generateContaminant("Cadmium", "<4.1 micrograms")}
     </div>
   `;
 }
