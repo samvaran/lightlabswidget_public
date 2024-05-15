@@ -213,11 +213,6 @@ const cssToInject = `#lightlabswidget-container {
   flex-wrap: wrap;
   gap: 8px;
 }
-.lightlabswidget-contaminants-puritymsg {
-  font-size: 11px;
-  color: #6dbce8;
-  margin-bottom: 8px;
-}
 
 #lightlabswidget-modal {
   display: none;
@@ -395,24 +390,46 @@ const cssToInject = `#lightlabswidget-container {
   font-size: 12px;
 }
 .lightlabswidget-contaminants-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 8px;
 }
 .lightlabswidget-contaminant {
   display: flex;
   align-items: center;
   padding: 4px 8px;
+  border: 1px solid #56ac64;
   border-radius: 5px;
-  background-color: #e9f5f0;
-  font-size: 10px;
-  color: #6e7a7e;
+  background-color: #e9fbf6;
+  font-size: 11px;
 }
 .lightlabswidget-contaminant-title {
+  color: black;
   margin-right: 5px;
 }
 .lightlabswidget-contaminant-amount {
-  color: #0aa370;
+  color: #56ac64;
+  margin-left: auto;
+}
+.lightlabswidget-contaminant-check {
+  width: 11px;
+  height: 11px;
+  margin-top: -1px;
+  margin-right: 4px;
+}
+.lightlabswidget-contaminant-check-circle {
+  fill: #269139;
+}
+.lightlabswidget-contaminant-check-path {
+  stroke: white;
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+.lightlabswidget-contaminants-puritymsg {
+  font-size: 11px;
+  color: #6dbce8;
 }
 `;
 const labData = [
@@ -541,6 +558,19 @@ function lightLabsWidget_generateBigBar(name, claim, actual, units) {
       `;
 }
 
+function lightLabsWidget_generateContaminant(name, value) {
+  return `
+    <div class="lightlabswidget-contaminant">
+      <svg class="lightlabswidget-contaminant-check" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle class="lightlabswidget-contaminant-check-circle" cx="50" cy="50" r="45"/>
+        <path class="lightlabswidget-contaminant-check-path" d="M30 50 L45 65 L70 35"/>
+      </svg>
+      <div class="lightlabswidget-contaminant-title">${name}</div>
+      <div class="lightlabswidget-contaminant-amount">${value}</div>
+    </div>
+  `;
+}
+
 function lightLabsWidget_generateContaminants() {
   return `
     <div class="lightlabswidget-contaminants-safemsg">
@@ -549,22 +579,13 @@ function lightLabsWidget_generateContaminants() {
       <b>entirely safe.</b>
     </div>
     <div class="lightlabswidget-contaminants-list">
-      <div class="lightlabswidget-contaminant">
-        <div class="lightlabswidget-contaminant-title">Lead</div>
-        <div class="lightlabswidget-contaminant-amount"><0.0005mg</div>
-      </div>
-      <div class="lightlabswidget-contaminant">
-        <div class="lightlabswidget-contaminant-title">Arsenic</div>
-        <div class="lightlabswidget-contaminant-amount"><0.001mg</div>
-      </div>
-      <div class="lightlabswidget-contaminant">
-        <div class="lightlabswidget-contaminant-title">Mercury</div>
-        <div class="lightlabswidget-contaminant-amount"><0.0003mg</div>
-      </div>
-      <div class="lightlabswidget-contaminant">
-        <div class="lightlabswidget-contaminant-title">Cadmium</div>
-        <div class="lightlabswidget-contaminant-amount"><0.0041mg</div>
-      </div>
+      ${lightLabsWidget_generateContaminant("Lead", "<0.0005 milligrams")}
+      ${lightLabsWidget_generateContaminant("Arsenic", "<0.01 milligrams")}
+      ${lightLabsWidget_generateContaminant("Mercury", "<0.0003 milligrams")}
+      ${lightLabsWidget_generateContaminant("Cadmium", "<0.0041 milligrams")}
+    </div>
+    <div class="lightlabswidget-contaminants-puritymsg">
+        Rigorously tested for purity
     </div>
   `;
 }
